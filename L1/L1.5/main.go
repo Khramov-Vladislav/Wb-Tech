@@ -1,41 +1,61 @@
+// Разработать программу, которая будет последовательно отправлять значения в канал, а с другой стороны канала – читать эти значения.
+// По истечении N секунд программа должна завершаться.
+// Подсказка: используйте time.After или таймер для ограничения времени работы.
+
 package main
 
 import (
+	"context"
 	"fmt"
+	"sync"
 	"time"
 )
 
 func main() {
-	N := 5 * time.Second // сколько секунд работает программа
-	ch := make(chan int)
+	var N time.Duration
+	fmt.Scan(&N)
 
-	// таймер завершения
-	timeout := time.After(N)
+	numbersChanel := make(chan int)
 
-	// Отправитель
+	ctx, cancel := context.WithCancel(context.Background())
+	var wg sync.WaitGroup
+
+	// запись
+	wg.Add(1)
 	go func() {
-		i := 1
+		number := 0
 		for {
 			select {
-			case ch <- i:
-				i++
-				time.Sleep(500 * time.Millisecond) // чтобы не спамило слишком быстро
-			case <-timeout:
-				fmt.Println("Отправитель остановлен")
+			case <-ctx.Done():
+				wg.Done()
+				fmt.Println("Горутина для записи завершила работу.")
 				return
+			case numbersChanel <- number:
+				time.Sleep(100 * time.Millisecond) // для читаемого вывода
+			}
+			number++
+		}
+	}()
+
+	// чтение
+	wg.Add(1)
+	go func() {
+		for {
+			select {
+			case <-ctx.Done():
+				wg.Done()
+				fmt.Println("Горутина для чтения завершила работу.")
+				return
+			case number := <-numbersChanel:
+				fmt.Println("Number:", number)
 			}
 		}
 	}()
 
-	// Приёмник
-	for {
-		select {
-		case val := <-ch:
-			fmt.Println("Получено:", val)
-		case <-timeout:
-			fmt.Println("Приёмник остановлен")
-			fmt.Println("Программа завершена")
-			return
-		}
-	}
+	// остановка
+	timeChanel := time.After(N * time.Second)
+	<-timeChanel
+	cancel()
+	wg.Wait()
+	fmt.Println("Программа завершилась")
 }
