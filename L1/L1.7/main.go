@@ -1,42 +1,40 @@
+// Реализовать безопасную для конкуренции запись данных в структуру map.
+// Подсказка: необходимость использования синхронизации (например, sync.Mutex или встроенная concurrent-map).
+// Проверьте работу кода на гонки (util go run -race).
+
 package main
 
 import (
+	"fmt"
 	"sync"
 )
 
-// SyncMapWrapper обертка над sync.Map с типизированными методами
-type SyncMapWrapper struct {
-	m sync.Map
+func worker(wg *sync.WaitGroup, lock *sync.Mutex, id int, numberMap map[int]int) {
+	fmt.Println("Горутина", id, "начала работу")
+
+	lock.Lock()
+	numberMap[id] = id * 10
+	lock.Unlock()
+
+	fmt.Println("Горутина", id, "закончила работу")
+	wg.Done()
 }
 
-// Set устанавливает значение по ключу
-func (s *SyncMapWrapper) Set(key string, value interface{}) {
-	s.m.Store(key, value)
-}
+func main() {
+	numberMap := make(map[int]int)
 
-// Get получает значение по ключу
-func (s *SyncMapWrapper) Get(key string) (interface{}, bool) {
-	return s.m.Load(key)
-}
+	var wg sync.WaitGroup
+	var lock sync.Mutex
 
-// Delete удаляет значение по ключу
-func (s *SyncMapWrapper) Delete(key string) {
-	s.m.Delete(key)
-}
+	countGorutins := 10
 
-// Range применяет функцию ко всем парам ключ-значение
-func (s *SyncMapWrapper) Range(f func(key string, value interface{}) bool) {
-	s.m.Range(func(key, value interface{}) bool {
-		return f(key.(string), value)
-	})
-}
+	for i := range countGorutins {
+		wg.Add(1)
+		go worker(&wg, &lock, i, numberMap)
+	}
 
-// Len возвращает количество элементов (приблизительное)
-func (s *SyncMapWrapper) Len() int {
-	count := 0
-	s.m.Range(func(_, _ interface{}) bool {
-		count++
-		return true
-	})
-	return count
+	wg.Wait()
+
+	fmt.Println("Длинна map равна", len(numberMap))
+	fmt.Println("main завершила работу")
 }
