@@ -1,0 +1,49 @@
+{
+  "OrderUID": "order-321",
+  "TrackNumber": "TRK1003",
+  "Entry": "online",
+  "Locale": "en",
+  "InternalSig": "sig1003",
+  "CustomerID": "cust-003",
+  "DeliveryService": "UPS",
+  "ShardKey": "shard-3",
+  "SmID": 3,
+  "DateCreated": "2025-08-29T12:00:00Z",
+  "OofShard": "shard-3",
+  "Delivery": {
+    "Name": "Bob Johnson",
+    "Phone": "+1122334455",
+    "Zip": "90001",
+    "City": "Los Angeles",
+    "Address": "456 Sunset Blvd",
+    "Region": "CA",
+    "Email": "bob@example.com"
+  },
+  "Payment": {
+    "Transaction": "txn-1003",
+    "RequestID": "req-1003",
+    "Currency": "USD",
+    "Provider": "Visa",
+    "Amount": 300,
+    "PaymentDt": 1693312800,
+    "Bank": "Bank C",
+    "DeliveryCost": 20,
+    "GoodsTotal": 280,
+    "CustomFee": 0
+  },
+  "Items": [
+    {
+      "ChrtID": 3,
+      "TrackNumber": "TRK1003",
+      "Price": 280,
+      "Rid": "rid-1003",
+      "Name": "Product C",
+      "Sale": 0,
+      "Size": "S",
+      "TotalPrice": 280,
+      "NmID": 103,
+      "Brand": "BrandZ",
+      "Status": 1
+    }
+  ]
+}

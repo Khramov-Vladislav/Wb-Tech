@@ -1,0 +1,49 @@
+{
+  "OrderUID": "order-123",
+  "TrackNumber": "TRK1002",
+  "Entry": "mobile",
+  "Locale": "ru",
+  "InternalSig": "sig1002",
+  "CustomerID": "cust-002",
+  "DeliveryService": "FedEx",
+  "ShardKey": "shard-2",
+  "SmID": 2,
+  "DateCreated": "2025-08-29T11:00:00Z",
+  "OofShard": "shard-2",
+  "Delivery": {
+    "Name": "Ivan Ivanov",
+    "Phone": "+7987654321",
+    "Zip": "101000",
+    "City": "Moscow",
+    "Address": "Lenina St, 10",
+    "Region": "Moscow",
+    "Email": "ivan@example.ru"
+  },
+  "Payment": {
+    "Transaction": "txn-1002",
+    "RequestID": "req-1002",
+    "Currency": "RUB",
+    "Provider": "Mastercard",
+    "Amount": 20000,
+    "PaymentDt": 1693309200,
+    "Bank": "Bank B",
+    "DeliveryCost": 500,
+    "GoodsTotal": 19500,
+    "CustomFee": 0
+  },
+  "Items": [
+    {
+      "ChrtID": 2,
+      "TrackNumber": "TRK1002",
+      "Price": 19500,
+      "Rid": "rid-1002",
+      "Name": "Product B",
+      "Sale": 0,
+      "Size": "L",
+      "TotalPrice": 19500,
+      "NmID": 102,
+      "Brand": "BrandY",
+      "Status": 1
+    }
+  ]
+}

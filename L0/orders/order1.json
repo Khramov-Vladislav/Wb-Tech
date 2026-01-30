@@ -1,0 +1,49 @@
+{
+  "OrderUID": "order-777",
+  "TrackNumber": "TRK-12345",
+  "Entry": "web",
+  "Locale": "ru",
+  "InternalSig": "sig-001",
+  "CustomerID": "cust-001",
+  "DeliveryService": "DHL",
+  "ShardKey": "shard-1",
+  "SmID": 10,
+  "DateCreated": "2026-01-17 21:30:00",
+  "OofShard": "shard-1",
+  "Delivery": {
+    "Name": "Иван Иванов",
+    "Phone": "+79161234567",
+    "Zip": "101000",
+    "City": "Москва",
+    "Address": "ул. Тверская, 1",
+    "Region": "Москва",
+    "Email": "ivan@example.com"
+  },
+  "Payment": {
+    "Transaction": "txn-1001",
+    "RequestID": "req-1001",
+    "Currency": "RUB",
+    "Provider": "SBERBANK",
+    "Amount": 1500,
+    "PaymentDt": 1673953200,
+    "Bank": "Sberbank",
+    "DeliveryCost": 300,
+    "GoodsTotal": 1200,
+    "CustomFee": 0
+  },
+  "Items": [
+    {
+      "ChrtID": 1,
+      "TrackNumber": "TRK-12345",
+      "Price": 1200,
+      "Rid": "RID-001",
+      "Name": "Товар 1",
+      "Sale": 0,
+      "Size": "M",
+      "TotalPrice": 1200,
+      "NmID": 101,
+      "Brand": "BrandA",
+      "Status": 1
+    }
+  ]
+}
