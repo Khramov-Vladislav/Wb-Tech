@@ -1,34 +1,25 @@
-package main
-
-import "fmt"
-
-// Реализовать пересечение двух неупорядоченных множеств
-// (например, двух слайсов) — т.е. вывести элементы,
-//  присутствующие и в первом, и во втором.
-
+// Реализовать пересечение двух неупорядоченных множеств (например, двух слайсов)
+// — т.е. вывести элементы, присутствующие и в первом, и во втором.
 // Пример:
 // A = {1,2,3}
 // B = {2,3,4}
 // Пересечение = {2,3}
 
-func IntersectionOfSets(setOne, setTwo []int) []int {
-	setResult := []int{}
-	for i := range setOne {
-		for j := range setTwo {
-			if setOne[i] == setTwo[j] {
-				setResult = append(setResult, setOne[i])
+package main
+
+import "fmt"
+
+func main() {
+	slice1 := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	slice2 := []int{2, 4, 6, 8, 10}
+	resultSlice := []int{}
+
+	for i := range slice1 {
+		for j := range slice2 {
+			if slice1[i] == slice2[j] {
+				resultSlice = append(resultSlice, slice1[i])
 			}
 		}
 	}
-
-	return setResult
-}
-
-// может быть поменять двойной цикл на что-то другое, по другому реализовать
-
-func main() {
-	setOne := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-	setTwo := []int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
-	setResult := IntersectionOfSets(setOne, setTwo)
-	fmt.Print(setResult)
+	fmt.Println(resultSlice)
 }
