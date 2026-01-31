@@ -6,10 +6,9 @@ package main
 
 import "fmt"
 
-
 func main() {
-	array1 := []string {"cat", "cat", "dog", "cat", "tree"}	
-	array2 := []string {}
+	array1 := []string{"cat", "cat", "dog", "cat", "tree"}
+	array2 := []string{}
 
 	for i := range array1 {
 		flag := false
