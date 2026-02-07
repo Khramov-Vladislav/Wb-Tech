@@ -1,5 +1,6 @@
 /*
 	Расстояние между точками
+
 	Разработать программу нахождения расстояния между двумя точками на плоскости.
 	Точки представлены в виде структуры Point с инкапсулированными (приватными) полями x, y (типа float64) и конструктором.
 	Расстояние рассчитывается по формуле между координатами двух точек.
@@ -23,7 +24,7 @@ func NewPoint(x, y float64) *Point {
 }
 
 func (this *Point) Distance(other *Point) float64 {
-	return math.Sqrt(math.Pow((this.x - other.x), 2) + math.Pow((this.y - other.y), 2))
+	return math.Sqrt(math.Pow((this.x-other.x), 2) + math.Pow((this.y-other.y), 2))
 }
 
 func main() {

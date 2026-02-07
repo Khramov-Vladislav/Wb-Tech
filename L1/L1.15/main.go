@@ -1,21 +1,24 @@
 /*
+	Небольшой фрагмент кода — проблемы и решение
+
 	Рассмотреть следующий код и ответить на вопросы:
 	к каким негативным последствиям он может привести и как это исправить?
+
 	Приведите корректный пример реализации.
 	Вопрос: что происходит с переменной justString?
 */
 
 /*
-var justString string
+	var justString string
 
-func someFunc() {
-  v := createHugeString(1 << 10)
-  justString = v[:100]
-}
+	func someFunc() {
+	v := createHugeString(1 << 10)
+	justString = v[:100]
+	}
 
-func main() {
-  someFunc()
-}
+	func main() {
+	someFunc()
+	}
 */
 
 /*
