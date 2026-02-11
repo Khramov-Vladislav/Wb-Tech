@@ -77,7 +77,7 @@ func TestCache_SetValidated_Valid(t *testing.T) {
 func TestCache_SetValidated_Invalid(t *testing.T) {
 	c := NewCache(2 * time.Second)
 
-	order := &models.Order{} 
+	order := &models.Order{}
 	err := c.SetValidated("", order)
 	assert.Error(t, err)
 }

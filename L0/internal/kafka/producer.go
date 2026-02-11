@@ -16,7 +16,7 @@ type Producer struct {
 	writer *kafka.Writer
 }
 
-// NewProducer создает новый Kafka продюсер 
+// NewProducer создает новый Kafka продюсер
 func NewProducer(brokers []string, topic string) ProducerInterface {
 	writer := &kafka.Writer{
 		Addr:     kafka.TCP(brokers...),

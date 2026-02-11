@@ -1,10 +1,11 @@
 package cache
 
 import (
-	"microservice/internal/models"
-	"microservice/internal/validation"
 	"sync"
 	"time"
+
+	"microservice/internal/models"
+	"microservice/internal/validation"
 )
 
 type CacheItem struct {

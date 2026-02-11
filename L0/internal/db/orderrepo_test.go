@@ -1,8 +1,9 @@
 package db
 
 import (
-	"microservice/internal/models"
 	"testing"
+
+	"microservice/internal/models"
 
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
